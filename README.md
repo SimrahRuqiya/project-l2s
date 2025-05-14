@@ -2,9 +2,9 @@
 Our web and mobile project that implements a car rental system that will provide users with a great booking experience.
 
 Tech Stack
-Frontend: HTML, CSS, Semantic UI, Mustache
-Backend: Java Spring Boot
-Database: MariaDB
+Frontend: HTML, CSS, Semantic UI, Mustache <br>
+Backend: Java Spring Boot <br>
+Database: MariaDB <br>
 
 Features
 - Users can view and filter vehicles

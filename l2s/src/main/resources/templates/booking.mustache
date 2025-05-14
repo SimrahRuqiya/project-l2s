@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Book a Car | L2S Rentals</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <link rel="icon" type="image/png" href="/images/haifa.png">
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #fff0f5;
+        }
+
+        .navbar {
+            height: 60px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: rgba(255, 133, 179, 0.5);
+            backdrop-filter: blur(8px);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .navbar .ui.menu {
+            border-radius: 2em;
+            background-color: transparent;
+            box-shadow: none;
+        }
+
+        .navbar .item {
+            color: white !important;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .form-container {
+            max-width: 500px;
+            margin: 4em auto;
+            background: white;
+            padding: 3em;
+            border-radius: 2em;
+            box-shadow: 0 10px 30px rgba(255, 133, 179, 0.2);
+            animation: fadeIn 1.2s ease;
+        }
+
+        h1 {
+            text-align: center;
+            color: #ff85b3;
+            font-size: 2.5em;
+            margin-top: 1em;
+        }
+
+        .ui.pink.button {
+            background-color: #ff85b3 !important;
+            color: white !important;
+        }
+
+        @keyframes fadeIn {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        .success-message {
+            color: #27ae60;
+            text-align: center;
+            margin-bottom: 1em;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<div class="navbar">
+    <div class="ui secondary menu">
+        <a class="item" href="/home">Home</a>
+        <a class="item" href="/reviews/form">Leave a Review</a>
+        <a class="item" href="/reviews/all">View Reviews</a>
+    </div>
+</div>
+<h1>Book Your Dream Ride</h1>
+
+<div class="form-container">
+    {{#message}}<div class="success-message">{{message}}</div>{{/message}}
+
+    <form class="ui form" action="/rentals/book" method="post">
+        <div class="field">
+            <label>Your Name</label>
+            <input type="text" name="userName" placeholder="Enter your name" required>
+        </div>
+
+        <div class="field">
+            <label>Contact Number</label>
+            <input type="text" name="userContact" placeholder="050 123 4567" required>
+        </div>
+
+        <div class="field">
+            <label>Car</label>
+            <input type="text" value="{{selectedCar.carBrand}} {{selectedCar.carModel}}" disabled>
+            <input type="hidden" name="carId" value="{{selectedCar.carId}}">
+        </div>
+
+        <div class="field">
+            <label>Start Date</label>
+            <input type="date" name="startDate" required>
+        </div>
+
+        <div class="field">
+            <label>End Date</label>
+            <input type="date" name="endDate" required>
+        </div>
+
+        <button class="ui pink button fluid" type="submit">Book Now!</button>
+    </form>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        $('.ui.dropdown').dropdown();
+    });
+</script>
+</body>
+</html>

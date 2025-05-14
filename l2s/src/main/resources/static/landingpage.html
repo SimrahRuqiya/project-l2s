@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>About Us | L2S Rentals</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <style>
+        body { margin: 0; font-family: 'Segoe UI', sans-serif; background-color: #fff0f5; overflow-x: hidden; }
+        .navbar { position: absolute; height: 50px; top: 20px; left: 0; right: 0; z-index: 10; display: flex; justify-content: center; }
+        .navbar .ui.menu { background: rgba(255, 133, 179, 0.5); backdrop-filter: blur(8px); border-radius: 2em; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        .navbar .item { color: white !important; font-weight: bold; font-size: 1.5rem; }
+        .hero-section { position: relative; background: linear-gradient(to right, #ff85b3, #ffc1d3); height: 500px; display: flex; flex-direction: column; align-items: center; justify-content: center; overflow: hidden; }
+        .hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; backdrop-filter: blur(2px); background-color: rgba(255, 255, 255, 0.1); z-index: 1; }
+        .hero-title, .hero-subtitle { position: relative; z-index: 2; }
+        .hero-title { background-color: rgba(255, 133, 179, 0.75); padding: 1em 2em; color: white; font-size: 3.5em; font-weight: bold; box-shadow: 0 0 20px rgba(255, 133, 179, 0.5); animation: fadeInDown 1s ease; }
+        .hero-subtitle { margin-top: 1em; text-align: center; font-size: 1.5em; color: white; font-weight: 300; background-color:rgba(255, 133, 179, 0.75); padding: 0.5em 1.5em; border-radius: 1em; box-shadow: 0 0 10px rgba(255, 133, 179, 0.2); animation: fadeInUp 1.5s ease; }
+        .steps-section { padding: 4em 2em; }
+        .ui.steps .step { background: #ffe4ec; border-radius: 1em; padding: 2em; box-shadow: 0 0 10px rgba(255, 133, 179, 0.2); transition: transform 0.3s; }
+        .ui.steps .step:hover { transform: scale(1.05); }
+        .ui.pink.button { background-color: #ff85b3 !important; color: white !important; }
+        @keyframes fadeInDown { 0% { opacity: 0; transform: translateY(-30px); } 100% { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeInUp { 0% { opacity: 0; transform: translateY(30px); } 100% { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+
+<body>
+
+<div class="hero-section">
+    <div class="hero-overlay"></div>
+    <div class="hero-title">About L2S Rentals</div>
+    <div class="hero-subtitle">Your Journey, Your Choice, Your Story</div>
+</div>
+
+<div class="ui container steps-section">
+    <h2 class="ui center aligned header" style="color: #ff85b3; font-size: 3em">How It Works</h2>
+
+    <div class="ui stackable four steps" style="margin-top: 3em;">
+        <div class="step">
+            <div class="content">
+                <div class="title">1. Choose Your Car</div>
+                <div class="description">Browse our curated collection and pick your dream ride.</div>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="content">
+                <div class="title">2. Fill in Your Information</div>
+                <div class="description">Complete a simple form with your details to reserve.</div>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="content">
+                <div class="title">3. Get Supplier Info</div>
+                <div class="description">We connect you directly to the car supplier for easy coordination.</div>
+            </div>
+        </div>
+
+        <div class="step">
+            <div class="content">
+                <div class="title">4. Leave a Review</div>
+                <div class="description">Share your experience and help empower the next customer!</div>
+            </div>
+        </div>
+    </div>
+
+    <a href="/home" class="ui pink button" style="display: block; margin: 4em auto 0 auto; padding: 1.2em 3em; font-size: 2em; font-weight: bold; border-radius: 2em; box-shadow: 0 8px 20px rgba(255, 133, 179, 0.5); transition: transform 0.3s;">
+        Start Renting
+    </a>
+
+</div>
+
+<div class="ui vertical footer segment" style="background: #ffe4ec; margin-top: 5em; padding: 2em 0;">
+    <div class="ui container">
+        <div class="ui stackable grid">
+            <div class="eight wide column" style="text-align: left; font-size: 0.9em; color: #555;">
+                <strong>Car Rental Hub: L2S Rentals</strong><br>
+                ISTE240 Project | Spring 2245<br>
+                Instructor: Dr. Ali Assi
+            </div>
+            <div class="eight wide column" style="text-align: right; font-size: 0.9em; color: #555;">
+                <strong>Team Members</strong><br>
+                Leen Abhari - 386009820<br>
+                Leen Alamm - 762003370<br>
+                Simrah Shabandri - 768009185
+            </div>
+        </div>
+        <div class="ui divider" style="margin: 1.5em 0;"></div>
+        <div style="text-align: center; font-size: 0.8em; color: #999;">
+            © 2025 L2S Rentals. All rights reserved.
+        </div>
+    </div>
+</div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+</body>
+</html>

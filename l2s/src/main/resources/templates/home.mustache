@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>L2S Rentals</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <link rel="icon" type="image/png" href="/images/haifa.png">
+
+    <style>
+        body { margin: 0; font-family: 'Segoe UI', sans-serif; background-color: #fff0f5; overflow-x: hidden; }
+        .navbar { position: absolute; height: 50px; top: 20px; left: 0; right: 0; z-index: 10; display: flex; justify-content: center; }
+        .navbar .ui.menu { background: rgba(255, 133, 179, 0.5); backdrop-filter: blur(8px); border-radius: 2em; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        .navbar .item { color: white !important; font-weight: bold; font-size: 1.5rem; }
+        .hero-section { position: relative; background: url('/images/homebg.jpeg') center center / cover no-repeat; height: 700px; display: flex; flex-direction: column; align-items: center; justify-content: center; overflow: hidden; }
+        .hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; backdrop-filter: blur(2px); background-color: rgba(255, 255, 255, 0.1); z-index: 1; }
+        .hero-title, .hero-subtitle { position: relative; z-index: 2; }
+        .hero-title { background-color: rgba(255, 133, 179, 0.75); padding: 1.5em 3em; color: white; font-size: 4em; font-weight: bold; box-shadow: 0 0 20px rgba(255, 133, 179, 0.5); animation: fadeInDown 1s ease; }
+        .hero-subtitle { position: absolute; bottom: 170px; text-align: center; font-size: 1.5em; color: white; font-weight: 300; background-color:rgba(255, 133, 179, 0.75); padding: 0.5em 1.5em; border-radius: 1em; box-shadow: 0 0 10px rgba(255, 133, 179, 0.2); animation: fadeInUp 1.5s ease; }
+        .ui.container { margin-top: 3em; animation: fadeInUp 1.5s ease; }
+        .ui.pink.button { background-color: #ff85b3 !important; color: white !important; }
+        .car-cards .card { transition: transform 0.3s ease; }
+        .car-cards .card:hover { transform: scale(1.05); }
+        .ui.segment { background: none; box-shadow: none; }
+        @keyframes fadeInDown { 0% { opacity: 0; transform: translateY(-30px); } 100% { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeInUp { 0% { opacity: 0; transform: translateY(30px); } 100% { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+
+<body>
+
+<div class="navbar">
+    <div class="ui secondary menu">
+        <a class="item" href="/reviews/form">Leave a Review</a>
+        <a class="item" href="/reviews/all">View Reviews</a>
+    </div>
+</div>
+
+<div class="hero-section">
+    <div class="hero-overlay"></div>
+    <div class="hero-title">L2S Car Rentals</div>
+    <h2 class="hero-subtitle">Dubai's Premium Car Rentals Crafted for Her</h2>
+</div>
+
+<div class="ui container" style="margin-top: 3em;">
+    <div class="ui action input fluid">
+        <input type="text" id="searchModel" placeholder="Search by Model..." />
+        <select id="searchBrand" class="ui dropdown">
+            <option value="">Select Brand</option>
+            <option value="BMW">BMW</option>
+            <option value="Ford">Ford</option>
+            <option value="Audi">Audi</option>
+            <option value="Mercedes-Benz">Mercedes-Benz</option>
+            <option value="Porsche">Porsche</option>
+            <option value="Jaguar">Jaguar</option>
+            <option value="Lexus">Lexus</option>
+            <option value="Tesla">Tesla</option>
+            <option value="Range Rover">Range Rover</option>
+            <option value="Maserati">Maserati</option>
+            <option value="Bentley">Bentley</option>
+            <option value="Rolls-Royce">Rolls-Royce</option>
+            <option value="Ferrari">Ferrari</option>
+            <option value="Aston Martin">Aston Martin</option>
+            <option value="Toyota">Toyota</option>
+            <option value="Honda">Honda</option>
+            <option value="Chevrolet">Chevrolet</option>
+            <option value="Nissan">Nissan</option>
+            <option value="Kia">Kia</option>
+
+        </select>
+        <button id="searchButton" class="ui pink button">Search</button>
+    </div>
+</div>
+<div class="ui container">
+    <div class="ui three stackable cards centered car-cards">
+
+    </div>
+</div>
+
+<div class="ui vertical footer segment" style="background: #ffe4ec; margin-top: 5em; padding: 2em 0;">
+    <div class="ui container">
+        <div class="ui stackable grid">
+            <div class="eight wide column" style="text-align: left; font-size: 0.9em; color: #555;">
+                <strong>Car Rental Hub: L2S Rentals</strong><br>
+                ISTE240 Project | Spring 2245<br>
+                Instructor: Dr. Ali Assi
+            </div>
+            <div class="eight wide column" style="text-align: right; font-size: 0.9em; color: #555;">
+                <strong>Team Members</strong><br>
+                Leen Abhari - 386009820<br>
+                Leen Alamm - 762003370<br>
+                Simrah Shabandri - 768009185
+            </div>
+        </div>
+        <div class="ui divider" style="margin: 1.5em 0;"></div>
+        <div style="text-align: center; font-size: 0.8em; color: #999;">
+            © 2025 L2S Rentals. All rights reserved.
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $(document).ready(function() {
+        $.getJSON('/api/cars', function(data) {
+            var $carCards = $('.car-cards');
+            $carCards.empty();
+            $.each(data, function(index, car) {
+                var card = `
+                <div class="card">
+                    <div class="image">
+                        <img src="${car.carImagePath || '/images/default-car.jpg'}" alt="${car.carBrand} ${car.carModel}">
+                    </div>
+                    <div class="content">
+                        <div class="header">${car.carBrand} ${car.carModel}</div>
+                        <div class="meta">${car.carCondition}</div>
+                        <div class="description">Price: ${car.carPrice} AED/day</div>
+                    </div>
+                    <div class="extra content">
+                        <a class="ui pink button" href="/rentals/book?carId=${car.carId}">Book Now</a>
+                    </div>
+                </div>
+            `;
+                $carCards.append(card);
+            });
+        }).fail(function() {
+            console.error('Failed to load car data.');
+        });
+
+        $('#searchButton').click(function() {
+            var model = $('#searchModel').val().toLowerCase();
+            var brand = $('#searchBrand').val().toLowerCase();
+
+            $.getJSON('/api/cars', function(data) {
+                var $carCards = $('.car-cards');
+                $carCards.empty();
+
+                $.each(data, function(index, car) {
+                    if ((model === '' || car.carModel.toLowerCase().includes(model)) &&
+                            (brand === '' || car.carBrand.toLowerCase() === brand)) {
+                        var card = `
+                        <div class="card">
+                            <div class="image">
+                                <img src="${car.carImagePath || '/images/default-car.jpg'}" alt="${car.carBrand} ${car.carModel}">
+                            </div>
+                            <div class="content">
+                                <div class="header">${car.carBrand} ${car.carModel}</div>
+                                <div class="meta">${car.carCondition}</div>
+                                <div class="description">Price: ${car.carPrice} AED/day</div>
+                            </div>
+                            <div class="extra content">
+                                <a class="ui pink button" href="/rentals/book?carId=${car.carId}">Book Now</a>
+                            </div>
+                        </div>
+                    `;
+                        $carCards.append(card);
+                    }
+                });
+            }).fail(function() {
+                console.error('Failed to load car data.');
+            });
+        });
+    });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+</body>
+</html>

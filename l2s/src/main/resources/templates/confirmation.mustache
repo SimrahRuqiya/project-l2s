@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking Confirmed</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <link rel="icon" type="image/png" href="/images/haifa.png">
+    <style>
+        body {
+            background-color: #fff0f5;
+            font-family: 'Segoe UI', sans-serif;
+        }
+        .ui.container {
+            margin-top: 3em;
+        }
+        h1 {
+            text-align: center;
+            color: #ff85b3;
+            font-size: 2.5em;
+            margin-top: 1em;
+        }
+        .ui.message {
+            background-color: rgba(255, 133, 179, 0.1);
+            border-left: 4px solid #ff85b3;
+        }
+        .ui.buttons .ui.button {
+            background-color: #ff85b3 !important;
+            color: white !important;
+        }
+    </style>
+</head>
+<body>
+
+<div class="ui container">
+
+    <h1>Thank You, {{userName}}!</h1>
+
+    <div class="ui message">
+        <div class="header">Your rental of the {{carBrand}} {{carModel}} has been confirmed.</div>
+        <p><strong>Rental Period:</strong> {{startDate}} to {{endDate}}</p>
+        <p><strong>Total Cost:</strong> {{totalPrice}} AED</p>
+    </div>
+    <div class="ui divider"></div>
+
+    <div class="ui message">
+            <div class="header">Supplier Details
+                <p><strong>Name:</strong> {{supplierName}}</p>
+                <p><strong>Contact:</strong> {{supplierContact}}</p>
+            </div>
+    </div>
+
+    <div class="ui centered buttons">
+        <a href="/home" class="ui button">Back to Home</a>
+        <a href="/rentals/user/{{userName}}" class="ui button">View Rentals</a>
+        <a href="/reviews/form" class="ui button">Leave a Review</a>
+    </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rental History - L2S Rentals</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <link rel="icon" type="image/png" href="/images/haifa.png">
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            background-color: #fff0f5;
+            overflow-x: hidden;
+        }
+        h1 {
+            text-align: center;
+            color: #d63384;
+            margin-top: 2em;
+            animation: fadeInDown 1s ease;
+        }
+        .ui.table {
+            margin-top: 2em;
+            background-color: #fff0f5;
+            border-radius: 1em;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            animation: fadeInUp 1s ease;
+        }
+        .ui.pink.button {
+            background-color: #ff85b3 !important;
+            color: white !important;
+            border-radius: 1em;
+        }
+        .ui.pink.button:hover {
+            background-color: #e673a4 !important;
+        }
+        .button-container {
+            text-align: center;
+            margin: 3em 0;
+            animation: fadeInUp 1.5s ease;
+        }
+        @keyframes fadeInDown {
+            0% { opacity: 0; transform: translateY(-30px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInUp {
+            0% { opacity: 0; transform: translateY(30px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>Rental History</h1>
+
+<div class="ui container">
+    <table class="ui celled pink table">
+        <thead>
+        <tr>
+            <th>User</th>
+            <th>Car</th>
+            <th>From</th>
+            <th>To</th>
+            <th>Total Price</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#rentals}}
+            <tr>
+                <td>{{user.userName}}</td>
+                <td>{{car.carBrand}} {{car.carModel}}</td>
+                <td>{{rentalStartDate}}</td>
+                <td>{{rentalEndDate}}</td>
+                <td>{{totalPrice}} AED</td>
+            </tr>
+        {{/rentals}}
+        </tbody>
+    </table>
+</div>
+
+<div class="button-container">
+    <a href="/home">
+        <button class="ui pink button">Back to Home</button>
+    </a>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/semantic-ui@2.4.2/dist/semantic.min.js"></script>
+</body>
+</html>
